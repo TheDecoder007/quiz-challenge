@@ -130,10 +130,76 @@ const questions = [
     question: 'How hard will you be while grading this project?',
     answers: [
       { text: 'Extremely hard', correct: false },
-      { text: 'You already failed', correct: false },
-      { text: 'Nice and Easy', correct: true },
-      { text: 'Scrutinizing every detail', correct: false },
+      { text: 'I already failed', correct: false },
+      { text: 'Nice and easy', correct: true },
+      { text: 'What project?', correct: false },
     ]
   },
 
 ]
+
+//Timer 
+
+const timeH = document.querySelector('h2');
+let timeSecond = 5;
+
+displayTime(timeSecond); 
+
+const countDown = setInterval (()=>{
+timeSecond--;
+displayTime(timeSecond);
+if (timeSecond <= 0 || timeSecond < 1) {
+  endTime();
+  clearInterval(countDown);
+}
+},1000)
+
+function displayTime(second) {
+  const min = Math.floor(second / 60);
+  const sec = Math.floor(second % 60);
+  timeH.innerHTML = "${min<10 ? '0': ''}${min}:${sec<10 ? '0': ''}${sec}"
+}
+
+function endTime() {
+  timeH.innerHTML = 'TIME UP!'
+}
+
+
+// const startingMinutes = 10;
+// let time = startingMinutes = 60;
+
+// const countdownEl = document.getElementById ('countdown');
+
+// setInterval(updateCountdown, 1000);
+
+// function updateCountdown() {
+//   const minutes = Math.floor(time / 60);
+//   let seconds = time % 60;
+
+//   countdownEl.innerHTML = '${minutes}: ${seconds}';
+//   time--;
+// }
+
+// var counter = 0;
+// var timeleft = 60;
+
+// function convertSeconds(s) {
+//     var min = floor(s / 60);
+//     var sec = s % 60;
+//     return min + ':' + sec;
+
+// }
+
+//   function setup() {
+    
+//     var timer = select('#timer');
+//     timer.html(convertSeconds(timeleft - counter));
+
+//     function timeIt() {
+//       counter++;
+//       timer.html(convertSeconds(timeleft - counter));
+//     }
+
+//     setInterval(timeIt, 1000);
+//   }
+  
