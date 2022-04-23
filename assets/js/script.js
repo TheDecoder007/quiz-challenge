@@ -135,36 +135,74 @@ const questions = [
       { text: 'What project?', correct: false },
     ]
   },
-
 ]
 
 //Timer 
 
-const timeH = document.querySelector('h2');
-let timeSecond = 5;
+function startTimer() {
+  var timer = minutes, seconds;
+  setInterval(function() {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
 
-displayTime(timeSecond); 
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
 
-const countDown = setInterval (()=>{
-timeSecond--;
-displayTime(timeSecond);
-if (timeSecond <= 0 || timeSecond < 1) {
-  endTime();
-  clearInterval(countDown);
-}
-},1000)
+    display.textContent = minutes + ":" + seconds;
 
-function displayTime(second) {
-  const min = Math.floor(second / 60);
-  const sec = Math.floor(second % 60);
-  timeH.innerHTML = "${min<10 ? '0': ''}${min}:${sec<10 ? '0': ''}${sec}"
+    if (--timer < 0) {
+      timer = duration;
+
+    }
+  }, 1000);
 }
 
-function endTime() {
-  timeH.innerHTML = 'TIME UP!'
-}
+window.onload = function () {
+  var oneMinute = 60 * 1,
+  display = document.querySelector('#timer');
+  startTimer(oneMinute, display);
+};
 
+//timer
+// function startTimer() {
+//   var sec = 60;
+//   var timer = setInterval(function() {
+//     document.getElementById('timer').innerHTML = '00:'+sec;
+//     sec--;
+//     if (sec < 0) {
+//       clearInterval(timer);
+//       alert("Time Up!!")
+//     }
+//   }, 1000)
+// }
 
+//timer working
+// const timeH = document.querySelector('h2');
+// var timeLeft = 60;
+
+// displayTime(timeLeft); 
+
+// const countDown = setInterval (()=>{
+// timeLeft--;
+// displayTime(timeLeft);
+// if (timeLeft <= 0 || timeLeft < 1) {
+//   endTime();
+//   clearInterval(countDown);
+// }
+// },1000);
+
+// function displayTime(second) {
+//   const minutes = Math.floor(second / 60);
+//   const seconds = Math.floor(second % 60);
+
+//   timeH.innerHTML = timeLeft;
+// }
+
+// function endTime() {
+//   timeH.innerHTML = 'TIME UP!!'
+// }
+
+//timer
 // const startingMinutes = 10;
 // let time = startingMinutes = 60;
 
