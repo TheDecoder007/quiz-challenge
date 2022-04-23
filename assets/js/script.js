@@ -137,72 +137,84 @@ const questions = [
   },
 ]
 
-//Timer 
+//Timer not working
 
-function startTimer() {
-  var timer = minutes, seconds;
-  setInterval(function() {
-    minutes = parseInt(timer / 60, 10);
-    seconds = parseInt(timer % 60, 10);
-
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    display.textContent = minutes + ":" + seconds;
-
-    if (--timer < 0) {
-      timer = duration;
-
-    }
-  }, 1000);
-}
-
-window.onload = function () {
-  var oneMinute = 60 * 1,
-  display = document.querySelector('#timer');
-  startTimer(oneMinute, display);
-};
-
-//timer
 // function startTimer() {
-//   var sec = 60;
-//   var timer = setInterval(function() {
-//     document.getElementById('timer').innerHTML = '00:'+sec;
-//     sec--;
-//     if (sec < 0) {
-//       clearInterval(timer);
-//       alert("Time Up!!")
+//   var timer = minutes, seconds;
+//   setInterval(function() {
+//     minutes = parseInt(timer / 60, 10);
+//     seconds = parseInt(timer % 60, 10);
+
+//     minutes = minutes < 10 ? "0" + minutes : minutes;
+//     seconds = seconds < 10 ? "0" + seconds : seconds;
+
+//     display.textContent = minutes + ":" + seconds;
+
+//     if (--timer < 0) {
+//       timer = duration;
+
 //     }
-//   }, 1000)
+//   }, 1000);
 // }
+
+// window.onload = function () {
+//   var oneMinute = 60 * 1,
+//   display = document.querySelector('#timer');
+//   startTimer(oneMinute, display);
+// };
+
+//timer not working
+// (function() {
+//   var sec = 60;
+//   function startTimer(){
+//       console.log('timer suppose to go')
+//       var timer = setInterval(function(){
+//           sec--;
+//           document.getElementById('timerDisplay').innerHTML='00:'+sec;
+//           if (sec < 0) {
+//               clearInterval(timer);
+//               alert("Time is up!")
+//           }
+//       }, 1000);
+//   }
+//   document.getElementById('wrong').addEventListener('click', function() {
+//       sec -= 5;
+//       document.getElementById('timer').innerHTML='00:'+sec;
+//   });
+//   startTimer();
+// })()
 
 //timer working
-// const timeH = document.querySelector('h2');
-// var timeLeft = 60;
+var timeH = document.querySelector('h2');
+var timeLeft = 30;
 
-// displayTime(timeLeft); 
+displayTime(timeLeft); 
 
-// const countDown = setInterval (()=>{
-// timeLeft--;
-// displayTime(timeLeft);
-// if (timeLeft <= 0 || timeLeft < 1) {
-//   endTime();
-//   clearInterval(countDown);
-// }
-// },1000);
+document.getElementById("start-btn").addEventListener("click", function() {
 
-// function displayTime(second) {
-//   const minutes = Math.floor(second / 60);
-//   const seconds = Math.floor(second % 60);
+var countDown = setInterval (()=>{
+timeLeft--;
+displayTime(timeLeft);
+if (timeLeft <= 0 || timeLeft < 1) {
+  endTime();
+  clearInterval(countDown);
+}
+},1000);
+});
 
-//   timeH.innerHTML = timeLeft;
-// }
 
-// function endTime() {
-//   timeH.innerHTML = 'TIME UP!!'
-// }
+function displayTime(second) {
+  var minutes = Math.floor(second / 60);
+  var seconds = Math.floor(second % 60);
 
-//timer
+  timeH.innerHTML = timeLeft;
+}
+
+function endTime() {
+  timeH.innerHTML = 'TIME UP!!'
+}
+
+//timer not working
 // const startingMinutes = 10;
 // let time = startingMinutes = 60;
 

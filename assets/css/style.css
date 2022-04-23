@@ -25,7 +25,7 @@
   }
   
    .header {
-      margin-bottom: 100px;
+      margin-bottom: 50px;
       font-size: 75px;
       text-align: center;
       color: white;
@@ -47,7 +47,8 @@
     background-color: var(--box-color);
     border-radius: 5px;
     padding: 10px;
-    box-shadow: 0 0 20px 5px;
+    box-shadow: 0 0 20px 5px black;
+   
   }
   
   .btn-grid {
@@ -122,10 +123,11 @@
    justify-content: center;
    align-items: center;
    font-weight: bolder;
-   font-size: 60px;
+   font-size: 50px;
    height: 50px;
    width: 100px;
    color: white;
    text-align: center;
    margin-top: 50px;
+   padding-top: 40px;
  }
