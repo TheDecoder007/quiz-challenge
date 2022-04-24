@@ -35,7 +35,10 @@ function showQuestion(question) {
     button.classList.add('btn')
     if (answer.correct) {
       button.dataset.correct = answer.correct
-      
+    }
+//"wrong" button data for point deduction?
+      if (answer.wrong) {
+        button.dataset.wrong = answer.wrong
     }
     button.addEventListener('click', selectAnswer)
     answerButtonsElement.appendChild(button)
@@ -59,7 +62,9 @@ function selectAnswer(e) {
   })
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
-  } else {
+  }
+    //need to disable restart? or move somewhere else for after high score?
+  else {
     startButton.innerText = 'Restart'
     startButton.classList.remove('hide')
   }
@@ -138,7 +143,7 @@ var questions = [
 ]
 
 //timer working
-var timeH = document.querySelector('h2');
+var timeBox = document.querySelector('h2');
 var timeLeft = 60;
 
 displayTime(timeLeft); 
@@ -155,28 +160,32 @@ if (timeLeft <= 0 || timeLeft < 1) {
 },1000);
 });
 
-//subtract time for wrong answer - broken takes time off for all answers
-document.getElementById('answer-buttons').addEventListener('click', function() {
-
-  timeLeft -= 5;
-  document.getElementById('timer').innerHTML='00:'+sec;
-});
-
-countDown();
-//end of subtract time
-
 function displayTime(second) {
   var minutes = Math.floor(second / 60);
   var seconds = Math.floor(second % 60);
   
-  timeH.innerHTML = timeLeft;
+  timeBox.innerHTML = timeLeft;
 }
-
 
 function endTime() {
-  timeH.innerHTML = 'TIME UP!!'
+  timeBox.innerHTML = 'TIME UP!!'
+  
 }
 
+//subtract time for wrong answer - broken, takes time off for all answers
+document.getElementById("answer-buttons").addEventListener('click', function() {
+  //if (correct = false) {}
+  
+  timeLeft -= 5;
+  document.getElementById('timer').innerHTML='00:'+sec;
+});
+
+displayTime();
+
+//end of subtract time
+
+//saving time left to local storage
+//localStorage.setItem("timer", "timeLeft");
 
 
 //Timer not working
