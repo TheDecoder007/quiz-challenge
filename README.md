@@ -1,5 +1,4 @@
 # quiz-challenge
-A challenging quiz 
 
 A fun quiz to test your wits!
 
