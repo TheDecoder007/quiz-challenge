@@ -8,14 +8,14 @@ A fun quiz to test your wits!
 * CSS
 * Javascript
 
-## GitHub Link
+## Links
 github link https://github.com/TheDecoder007/quiz-challenge
+
+Deploy link: 
 
 ### Other Info
 * Timer starts on click of start button
 * Button color displays right or wrong answers
 * Restarts when quiz is finished
 
-Deploy link: 
-
-
+## Screenshot
