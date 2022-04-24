@@ -19,3 +19,4 @@ Deploy link:
 * Restarts when quiz is finished
 
 ## Screenshot
+![Screenshot (696)](https://user-images.githubusercontent.com/101135574/164992725-adda5f31-5e7a-497a-87eb-890c5820112c.png)
