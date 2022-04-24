@@ -1,12 +1,12 @@
 
 
-const startButton = document.getElementById('start-btn')
-const nextButton = document.getElementById('next-btn')
-const questionContainerElement = document.getElementById('question-container')
-const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById('answer-buttons')
+var startButton = document.getElementById('start-btn')
+var nextButton = document.getElementById('next-btn')
+var questionContainerElement = document.getElementById('question-container')
+var questionElement = document.getElementById('question')
+var answerButtonsElement = document.getElementById('answer-buttons')
 
-let shuffledQuestions, currentQuestionIndex
+var shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -30,7 +30,7 @@ function setNextQuestion() {
 function showQuestion(question) {
   questionElement.innerText = question.question
   question.answers.forEach(answer => {
-    const button = document.createElement('button')
+    var button = document.createElement('button')
     button.innerText = answer.text
     button.classList.add('btn')
     if (answer.correct) {
@@ -51,8 +51,8 @@ function resetState() {
 }
 
 function selectAnswer(e) {
-  const selectedButton = e.target
-  const correct = selectedButton.dataset.correct
+  var selectedButton = e.target
+  var correct = selectedButton.dataset.correct
   setStatusClass(document.body, correct)
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
@@ -80,11 +80,11 @@ function clearStatusClass(element) {
   element.classList.remove('wrong')
 }
 
-const questions = [
+var questions = [
   {
     question: 'How far behind am I in class?',
     answers: [
-      { text: '1 day', correct: false },
+      { text: '1 day', wrong: true },
       { text: '2 days', correct: false },
       { text: '1 week', correct: true },
       { text: '2 weeks', correct: false },
@@ -137,6 +137,48 @@ const questions = [
   },
 ]
 
+//timer working
+var timeH = document.querySelector('h2');
+var timeLeft = 60;
+
+displayTime(timeLeft); 
+
+document.getElementById("start-btn").addEventListener("click", function() {
+
+  var countDown = setInterval (()=>{
+    timeLeft--;
+displayTime(timeLeft);
+if (timeLeft <= 0 || timeLeft < 1) {
+  endTime();
+  clearInterval(countDown);
+}
+},1000);
+});
+
+//subtract time for wrong answer - broken takes time off for all answers
+document.getElementById('answer-buttons').addEventListener('click', function() {
+
+  timeLeft -= 5;
+  document.getElementById('timer').innerHTML='00:'+sec;
+});
+
+countDown();
+//end of subtract time
+
+function displayTime(second) {
+  var minutes = Math.floor(second / 60);
+  var seconds = Math.floor(second % 60);
+  
+  timeH.innerHTML = timeLeft;
+}
+
+
+function endTime() {
+  timeH.innerHTML = 'TIME UP!!'
+}
+
+
+
 //Timer not working
 
 // function startTimer() {
@@ -183,36 +225,6 @@ const questions = [
 //   });
 //   startTimer();
 // })()
-
-//timer working
-var timeH = document.querySelector('h2');
-var timeLeft = 30;
-
-displayTime(timeLeft); 
-
-document.getElementById("start-btn").addEventListener("click", function() {
-
-var countDown = setInterval (()=>{
-timeLeft--;
-displayTime(timeLeft);
-if (timeLeft <= 0 || timeLeft < 1) {
-  endTime();
-  clearInterval(countDown);
-}
-},1000);
-});
-
-
-function displayTime(second) {
-  var minutes = Math.floor(second / 60);
-  var seconds = Math.floor(second % 60);
-
-  timeH.innerHTML = timeLeft;
-}
-
-function endTime() {
-  timeH.innerHTML = 'TIME UP!!'
-}
 
 //timer not working
 // const startingMinutes = 10;
