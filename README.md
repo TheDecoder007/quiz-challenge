@@ -10,7 +10,7 @@ A fun quiz to test your wits!
 ## Links
 github link https://github.com/TheDecoder007/quiz-challenge
 
-Deploy link: 
+Deploy link: https://thedecoder007.github.io/quiz-challenge/
 
 ### Other Info
 * Timer starts on click of start button
