@@ -86,7 +86,13 @@ function clearStatusClass(element) {
 }
 
 var questions = [
-  {
+  // {
+  //     title: "commonly used data types DO NOT include:",
+  //     choices: ["strings", "booleasns", "alerts", "numbers"],
+  //     answer: "alerts"
+  
+  // },
+{
     question: 'How far behind am I in class?',
     answers: [
       { text: '1 day', wrong: true },
@@ -173,11 +179,12 @@ function endTime() {
 }
 
 //subtract time for wrong answer - broken, takes time off for all answers
-document.getElementById("answer-buttons").addEventListener('click', function() {
-  //if (correct = false) {}
+document.getElementById("button").addEventListener('click', function() {
+  //if (button = false) {}
+  //if (this.value !===  questions[i].answer) 
   
   timeLeft -= 5;
-  document.getElementById('timer').innerHTML='00:'+sec;
+  document.getElementById('timer')
 });
 
 displayTime();
@@ -185,7 +192,7 @@ displayTime();
 //end of subtract time
 
 //saving time left to local storage
-//localStorage.setItem("timer", "timeLeft");
+localStorage.setItem("timer", "timeLeft");
 
 
 //Timer not working
